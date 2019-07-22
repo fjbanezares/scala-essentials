@@ -1,5 +1,7 @@
 package exercises
 
+import scala.util.control.TailCalls.TailRec
+
 /**
   * Created by Daniel.
   */
@@ -16,7 +18,7 @@ abstract class MyList[+A] {
   def head: A
   def tail: MyList[A]
   def isEmpty: Boolean
-  def add[B >: A](element: B): MyList[B]
+  def add[B >: A](element: B): MyList[B]  // immmutable, we just give a new list
   def printElements: String
   // polymorphic call
   override def toString: String = "[" + printElements + "]"
@@ -37,7 +39,7 @@ abstract class MyList[+A] {
 }
 
 case object Empty extends MyList[Nothing] {
-  def head: Nothing = throw new NoSuchElementException
+  def head: Nothing = throw new NoSuchElementException // let s just crash he program with an exception
   def tail: MyList[Nothing] = throw new NoSuchElementException
   def isEmpty: Boolean = true
   def add[B >: Nothing](element: B): MyList[B] = new Cons(element, Empty)
@@ -62,7 +64,7 @@ case class Cons[+A](h: A, t: MyList[A]) extends MyList[A] {
   def head: A = h
   def tail: MyList[A] = t
   def isEmpty: Boolean = false
-  def add[B >: A](element: B): MyList[B] = new Cons(element, this)
+  def add[B >: A](element: B): MyList[B] = new Cons(element, this) // this object as the tail
   def printElements: String =
     if(t.isEmpty) "" + h
     else h + " " + t.printElements

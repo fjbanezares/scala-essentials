@@ -22,20 +22,23 @@ object MethodNotations extends App {
   val mary = new Person("Mary", "Inception")
   println(mary.likes("Inception"))
   println(mary likes "Inception") // equivalent
-  // infix notation = operator notation (syntactic sugar)
+ // println(mary + tom) // perfectly valid but Tom doesn't exist yet so it gives a NullPointer
+
+  // infix notation = operator notation (syntactic sugar) (with ine parameter)
 
   // "operators" in Scala
   val tom = new Person("Tom", "Fight Club")
   println(mary + tom)
-  println(mary.+(tom))
+  println(mary.+(tom))   //all operators are methods
 
   println(1 + 2)
   println(1.+(2))
 
   // ALL OPERATORS ARE METHODS.
-  // Akka actors have ! ?
+  // Akka actors have ! ? as operators
 
-  // prefix notation
+  // prefix notation (also syntactic sugar, nice ways of writing code)
+  // are methods with unary_ prefix
   val x = -1  // equivalent with 1.unary_-
   val y = 1.unary_-
   // unary_ prefix only works with - + ~ !
@@ -43,9 +46,9 @@ object MethodNotations extends App {
   println(!mary)
   println(mary.unary_!)
 
-  // postfix notation
+  // postfix notation, for functions that have not parameters
   println(mary.isAlive)
-  println(mary isAlive)
+  println(mary isAlive) // purpose to get Scala closer to natural language but not ofter used to avoid ambiguities
 
   // apply
   println(mary.apply())

@@ -22,7 +22,7 @@ object Functions extends App {
 
   println(aRepeatedFunction("hello",3))
 
-  // WHEN YOU NEED LOOPS, USE RECURSION.
+  // WHEN YOU NEED LOOPS, USE RECURSION .
 
   def aFunctionWithSideEffects(aString: String): Unit = println(aString)
 

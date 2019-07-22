@@ -18,14 +18,14 @@ object Expressions extends App {
   // ! && ||
 
   var aVariable = 2
-  aVariable += 3 // also works with -= *= /= ..... side effects
+  aVariable += 3 // also works with -= *= /= ..... side effects  (changing a variable is a side effect)
   println(aVariable)
 
-  // Instructions (DO) vs Expressions (VALUE)
+  // Instructions (DO) vs Expressions (VALUE and or a TYPE)
 
   // IF expression
   val aCondition = true
-  val aConditionedValue = if(aCondition) 5 else 3 // IF EXPRESSION
+  val aConditionedValue = if(aCondition) 5 else 3 // IF EXPRESSION because it gives back a value, not a instruction to assign
   println(aConditionedValue)
   println(if(aCondition) 5 else 3)
   println(1 + 3)
@@ -36,16 +36,17 @@ object Expressions extends App {
     i += 1
   }
 
-  // NEVER WRITE THIS AGAIN.
+  // NEVER WRITE THIS AGAIN... no while loops ... iterations can be done other way, this is very imperative not functional way, Scala forces everything to be an expression except definitions
 
   // EVERYTHING in Scala is an Expression!
+  //Instructions are executed vs expressions are evaluated
 
-  val aWeirdValue = (aVariable = 3) // Unit === void
-  println(aWeirdValue)
+  val aWeirdValue = (aVariable = 3) // Unit === void, it means do not return anything meaningful
+  println(aWeirdValue) //  ()
 
   // side effects: println(), whiles, reassigning
 
-  // Code blocks
+  // Code blocks, value it is the value of the last expression
 
   val aCodeBlock = {
     val y = 2
@@ -54,8 +55,10 @@ object Expressions extends App {
     if (z > 2) "hello" else "goodbye"
   }
 
-  // 1. difference between "hello world" vs println("hello world")?
-  // 2.
+
+  //val pee = 10 + z no visible fuera del bloque
+  // 1. difference between "hello world" vs println("hello world")? .... valuee of type string, the other is a side effect (type is Unit)
+  // 2. what is the value of: ...
 
   val someValue = {
     2 < 3

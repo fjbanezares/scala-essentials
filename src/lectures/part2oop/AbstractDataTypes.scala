@@ -8,12 +8,13 @@ object AbstractDataTypes extends App {
   // abstract
   abstract class Animal {
     val creatureType: String = "wild"
-    def eat: Unit
+    def eat: Unit   // abstract because it is unimplemented, I want the subclasses to do this for me
+    // cannot be instantiated bc runtype wouldn't know what to do
   }
 
   class Dog extends Animal {
     override val creatureType: String = "Canine"
-    def eat: Unit = println("crunch crunch")
+    def eat: Unit = println("crunch crunch")  // no mandatory in abstract member to say override as there is not prior implementation to replace
   }
 
   // traits
@@ -23,7 +24,7 @@ object AbstractDataTypes extends App {
   }
 
   trait ColdBlooded
-  class Crocodile extends Animal with Carnivore with ColdBlooded {
+  class Crocodile extends Animal with Carnivore with ColdBlooded {   //inherit members of all of them
     override val creatureType: String = "croc"
     def eat: Unit = println("nomnomnom")
     def eat(animal: Animal): Unit = println(s"I'm a croc and I'm eating ${animal.creatureType}")
